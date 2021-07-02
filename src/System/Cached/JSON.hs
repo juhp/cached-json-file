@@ -16,6 +16,9 @@ import System.Environment.XDG.BaseDir
 import System.FilePath
 
 -- FIXME handle network failure
+
+-- | If the local cached json file is new enough then use it,
+-- otherwise refresh from the remote url.
 getCachedJSON :: (FromJSON a, ToJSON a)
               => String -- ^ program name
               -> FilePath -- ^ filename
@@ -25,6 +28,8 @@ getCachedJSON :: (FromJSON a, ToJSON a)
 getCachedJSON prog jsonfile url minutes =
   getCachedJSONQuery prog jsonfile (webAPIQuery url []) minutes
 
+-- | Similar to getCachedJSON but takes an IO procedure that fetches
+-- the refreshed json data.
 getCachedJSONQuery :: (FromJSON a, ToJSON a)
                    => String -- ^ program name
                    -> FilePath -- ^ filename
