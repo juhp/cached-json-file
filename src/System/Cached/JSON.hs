@@ -1,7 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 module System.Cached.JSON (
-  getCachedJSON
+  getCachedJSON,
+  getCachedJSONQuery
   )
 where
 
@@ -15,13 +16,22 @@ import System.Environment.XDG.BaseDir
 import System.FilePath
 
 -- FIXME handle network failure
-getCachedJSON :: String -- ^ program name
+getCachedJSON :: (FromJSON a, ToJSON a)
+              => String -- ^ program name
               -> FilePath -- ^ filename
               -> String -- ^ json url
-              -> Query -- ^ url query params list
               -> NominalDiffTime -- ^ cache duration (minutes)
-              -> IO Object
-getCachedJSON prog jsonfile url params minutes = do
+              -> IO a
+getCachedJSON prog jsonfile url minutes =
+  getCachedJSONQuery prog jsonfile (webAPIQuery url []) minutes
+
+getCachedJSONQuery :: (FromJSON a, ToJSON a)
+                   => String -- ^ program name
+                   -> FilePath -- ^ filename
+                   -> IO a -- ^ http query
+                   -> NominalDiffTime -- ^ cache duration (minutes)
+                   -> IO a
+getCachedJSONQuery prog jsonfile webquery minutes = do
   file <- getUserCacheFile prog jsonfile
   exists <- doesFileExist file
   unless exists $ do
@@ -40,6 +50,6 @@ getCachedJSON prog jsonfile url params minutes = do
       Left err -> error err
       Right obj -> return obj
     else do
-    obj <- webAPIQuery url params
+    obj <- webquery
     B.writeFile file $ encode obj
     return obj
