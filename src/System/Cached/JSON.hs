@@ -21,7 +21,7 @@ import System.FilePath
 -- | If the local cached json file is new enough then use it,
 -- otherwise refresh from the remote url.
 getCachedJSON :: (FromJSON a, ToJSON a)
-              => String -- ^ program name
+              => String -- ^ subdirectory/program name
               -> FilePath -- ^ filename
               -> String -- ^ json url
               -> NominalDiffTime -- ^ cache duration (minutes)
