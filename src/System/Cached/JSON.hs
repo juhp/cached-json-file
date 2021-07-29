@@ -30,7 +30,7 @@ getCachedJSON prog jsonfile url minutes =
   getCachedJSONQuery prog jsonfile (webAPIQuery url []) minutes
 
 -- | Similar to getCachedJSON but takes an IO procedure that fetches
--- the refreshed json data.
+-- the remote json data.
 getCachedJSONQuery :: (FromJSON a, ToJSON a)
                    => String -- ^ program name
                    -> FilePath -- ^ filename
