@@ -3,9 +3,9 @@ version:             0.1.0
 synopsis:            Locally cache a json file obtained by http
 description:
         A small library for caching a slow-changing remote json file in
-        a specified directory under "~/.cache/".  When the json is requested
-        and the cache file is new enough it is read directly from the local
-        cache, otherwise the cached file is refreshed first.
+        a specified directory (under "~\/.cache\/").  When the json is requested
+        and the cache file is still fresh enough it is read directly from
+        the local cache, otherwise the cached file is refreshed first.
 license:             BSD3
 license-file:        LICENSE
 author:              Jens Petersen <juhpetersen@gmail.com>
