@@ -26,8 +26,8 @@ getCachedJSON :: (FromJSON a, ToJSON a)
               -> String -- ^ json url
               -> NominalDiffTime -- ^ cache duration (minutes)
               -> IO a
-getCachedJSON prog jsonfile url minutes =
-  getCachedJSONQuery prog jsonfile (webAPIQuery url []) minutes
+getCachedJSON prog jsonfile url =
+  getCachedJSONQuery prog jsonfile (webAPIQuery url [])
 
 -- | Similar to getCachedJSON but takes an IO procedure that fetches
 -- the remote json data.
