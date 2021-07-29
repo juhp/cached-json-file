@@ -2,7 +2,8 @@
 
 module System.Cached.JSON (
   getCachedJSON,
-  getCachedJSONQuery
+  getCachedJSONQuery,
+  lookupKey
   )
 where
 
