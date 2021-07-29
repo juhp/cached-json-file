@@ -16,8 +16,6 @@ import System.Directory
 import System.Environment.XDG.BaseDir
 import System.FilePath
 
--- FIXME handle network failure
-
 -- | If the local cached json file is new enough then use it,
 -- otherwise refresh from the remote url.
 getCachedJSON :: (FromJSON a, ToJSON a)

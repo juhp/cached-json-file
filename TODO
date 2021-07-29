@@ -1,0 +1,3 @@
+- check remote timestamp to determine freshness
+- define minutes, hours, etc?
+- handle network failure
