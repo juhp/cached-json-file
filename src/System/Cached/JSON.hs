@@ -42,10 +42,15 @@ getCachedJSONQuery prog jsonfile webquery minutes = do
     putStrLn $ "Creating " ++ file ++ " ..."
     createDirectoryIfMissing True (takeDirectory file)
   recent <- do
-    if exists then do
-      ts <- getModificationTime file
-      t <- getCurrentTime
-      return $ diffUTCTime t ts < (minutes * 60)
+    if exists
+      then do
+      size <- getFileSize file
+      if size == 0
+        then return False
+        else do
+        ts <- getModificationTime file
+        t <- getCurrentTime
+        return $ diffUTCTime t ts < (minutes * 60)
       else return False
   if recent
     then do

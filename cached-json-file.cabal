@@ -1,5 +1,5 @@
 name:                cached-json-file
-version:             0.1.0
+version:             0.1.0.1
 synopsis:            Locally cache a json file obtained by http
 description:
         A small library for caching a slow-changing remote json file in
