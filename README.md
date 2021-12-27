@@ -4,7 +4,7 @@ A Haskell library providing a cached json file.
 
 Useful for frequently used programs that use some remote json data
 which changes rather slowly (like in hours, days, weeks or months),
-where it is not critical to have always the latest data immediately.
+where it is not critical to have always the latest data locally immediately.
 
 ## Usage
 
@@ -32,4 +32,4 @@ There is also `getCachedJSONQuery prog jsonfile webquery minutes`
 which uses `webquery :: (FromJSON a, ToJSON a) => IO a` to download
 the json data.
 
-Currently the smallest possible cache time is 1 minute.
+The shortest cache time is 1 minute.

@@ -1,5 +1,5 @@
 name:                cached-json-file
-version:             0.1.0.1
+version:             0.1.1
 synopsis:            Locally cache a json file obtained by http
 description:
         A small library for caching a slow-changing remote json file in
@@ -19,7 +19,7 @@ extra-doc-files:     README.md
                      ChangeLog.md
 cabal-version:       2.0
 tested-with:         GHC == 8.2.2, GHC == 8.4.4, GHC == 8.6.5, GHC == 8.8.4,
-                     GHC == 8.10.4, GHC == 9.0.1
+                     GHC == 8.10.5, GHC == 9.0.1
 
 source-repository head
   type:                git
