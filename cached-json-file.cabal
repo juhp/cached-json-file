@@ -29,7 +29,7 @@ library
   build-depends:       base < 5,
                        aeson,
                        bytestring,
-                       directory,
+                       directory >= 1.2.7.0,
                        filepath,
                        http-query,
                        time,
